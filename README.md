@@ -12,12 +12,31 @@ I'm also just a bit bored and a bit curious. If you are too, feel free to contri
 
 ## What exists today
 
-- Working Raspberry Pi + RTL-SDR V4 capture scripts.
-- Spoken enter / hold still / leave cues from a Mac.
-- A pilot protocol and a randomized presence-versus-empty control protocol.
-- Raw recordings, phase timestamps, receiver logs, and reproducible analysis.
+- Native iPhone app with BLE controls, silent 3–2–1 capture, names, a capture library, and local image storage.
+- Raspberry Pi session engine: FM survey, frequency lock, empty baseline, repeat captures, and six paired PNGs per person.
+- Pi-side rendering using the shared Canvas art engine, with optional lossless OptiPNG optimization.
+- AirDrop/Messages through the iOS share sheet and Save to Photos. The operator chooses the recipient and sends.
+- Historical controlled RF experiments with raw data and reproducible analysis.
+- An archived ESP32 touchscreen controller prototype; it is not required for the iPhone workflow.
 
-A browser renderer is now included: harmonic ribbons, spectral terrain, and twisted fields, with monochrome-to-rainbow color, black/white backgrounds, and PNG export. Live Pi-to-browser capture, iPhone integration, ESP32 controls, and ultrasonic sensing remain planned.
+This is a working prototype, not a proven presence detector or a measurement of an aura. Geometry and color are artistic mappings of RF changes. The three baseline images are deliberately minimal; the three presence images use different artistic amplitude presets.
+
+## Run the iPhone + Pi instrument
+
+Use a Raspberry Pi 4, RTL-SDR Blog V4, antenna, a suitable power supply, and an iPhone with iOS 17 or later. Xcode on a Mac is required to build/install the app; choose your own development signing team.
+
+```bash
+git clone https://github.com/fairfigureofc/auracam.git
+cd auracam
+bash app/deploy-ble-mac.sh YOUR_USER@radiopi.local
+open app/ios/AuraCam.xcodeproj
+```
+
+Initial installation uses SSH/network access to install dependencies. The Pi services then start on boot; capture and image transfer use BLE without a shared Wi-Fi network. AirDrop separately requires Wi-Fi and Bluetooth enabled on the phones. Image messages use an image-capable Messages transport, not plain SMS.
+
+On iPhone: connect → survey → select frequency → measure/lock baseline → capture → name → Library → download/share. The Library lists completed six-image captures across saved sessions, newest first. Deleting a capture on the Pi requires confirmation and leaves downloaded iPhone copies intact.
+
+Read the [iPhone/BLE setup and limitations](app/ios/README.md), [Pi workflow](app/PI-SETUP.md), and [ESP32 prototype notes](app/firmware/README.md). Updates restart the active Pi session; start a new baseline afterward. Saved captures remain on disk.
 
 ## Open the waveform app
 
@@ -35,13 +54,12 @@ The app uses eight embedded recordings from the [October 2 dresser experiment](e
 
 ```text
 FM broadcasts → antenna → RTL-SDR V4 → Raspberry Pi 4
-                                            │
-                          Wi-Fi → browser art engine (recorded data)
-                                            │
-                          Wi-Fi → ESP32 + LCD controls (planned)
+                                      │ measurements + PNG rendering
+                                      └─ BLE → iPhone controls + library
+                                                └─ Photos / AirDrop / Messages
 ```
 
-The Pi hosts the SDR over USB. The ESP32-WROOM-32E is intended as a display/controller, not the SDR's USB host. No breadboard is required for the current experiment.
+The Pi hosts the SDR over USB. The ESP32 is optional archived controller work, not the SDR host. No breadboard is required.
 
 ## First results: promising, preliminary
 
@@ -118,15 +136,25 @@ Broadcast content, multipath, other movement, antenna coupling, receiver drift, 
 
 We analyze a band around the station rather than selecting whichever individual bin looks most convincing afterward. Power is averaged in linear units before conversion back to dB. Each trial is compared with its surrounding empty periods. The eight trials—not hundreds of one-second readings—are the experimental replicates.
 
-The capture band is currently fixed at **88–90.5 MHz**, with **20.7 dB gain** and one-second reporting. These settings came from our local initial scan. They may not be useful at your location. If you change them, document the change and choose the analysis band before collecting a confirmatory test.
+The historical controlled experiment uses a band fixed at **88–90.5 MHz**, with **20.7 dB gain** and one-second reporting. These settings came from our local initial scan. They may not be useful at your location. If you change them, document the change and choose the analysis band before collecting a confirmatory test.
 
 ## Where this could go
 
-1. Repeat the controlled result and improve capture reliability.
-2. Build a capture API on the Pi, with fresh empty-scene calibration.
-3. Trigger a camera-free capture from an iPhone or browser.
-4. Map measured differences into an expressive visual treatment.
-5. Add the ESP32's 2.8-inch display as the physical shutter and spectrum monitor.
+1. Repeat controlled experiments and improve capture reliability.
+2. Add transfer throughput measurements, thumbnails, and resumable/background downloads.
+3. Add wireless printing and a portable enclosure/power system.
+4. Harden BLE ownership and add session recovery after reboot.
+
+## Development checks
+
+```bash
+python3 -m unittest discover -s tests
+python3 -m unittest discover -s app -p 'test_*.py'
+xcodebuild -project app/ios/AuraCam.xcodeproj -scheme AuraCam \
+  -sdk iphonesimulator -derivedDataPath /tmp/auracam-build CODE_SIGNING_ALLOWED=NO build
+```
+
+Tests exercise protocol transport, capture-library isolation/deletion, and the historical randomized experiment without radio hardware. Real RF measurements, Bluetooth pairing/throughput, Photos permissions, and guest sharing still require device testing. The Pi HTTP interface is unauthenticated and intended only for a trusted LAN; do not expose it publicly. BLE uses encrypted characteristics and Just Works pairing; exclusive control is not an authenticated owner system.
 
 Contributions are welcome: replications, documented null results, receiver diagnostics, and visual experiments. Include hardware, antenna placement, room setup, protocol changes, and raw logs. Please remove credentials and personal paths before sharing recordings.
 
