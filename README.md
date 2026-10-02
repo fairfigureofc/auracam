@@ -2,7 +2,7 @@
 
 **A portrait of how you change the invisible world around you.**
 
-AuraCam is an experimental radio-driven photography project. An antenna listens to ambient radio broadcasts. We measure the room empty, then measure it with a person near the antenna. The idea is to turn that difference into a luminous, distorted, generative treatment around a photographic portrait.
+AuraCam is an experimental camera-free, radio-driven art project. An antenna listens to ambient radio broadcasts. We measure the room empty, then measure it with a person near the antenna. The idea is to turn that difference into layered, generative waveforms—without taking a photograph.
 
 Like pectral ribbons, interference halos, and color fields shaped by captures and what evvvvverrrr.
 
@@ -17,14 +17,26 @@ I'm also just a bit bored and a bit curious. If you are too, feel free to contri
 - A pilot protocol and a randomized presence-versus-empty control protocol.
 - Raw recordings, phase timestamps, receiver logs, and reproducible analysis.
 
-The iPhone integration, ESP32 interface, and final portrait renderer are **planned**, not implemented here. An early generative visual explored mapping spectrum power to ribbons; the current focus is validating the sensing.
+A browser renderer is now included: harmonic ribbons, spectral terrain, and twisted fields, with monochrome-to-rainbow color, black/white backgrounds, and PNG export. Live Pi-to-browser capture, iPhone integration, ESP32 controls, and ultrasonic sensing remain planned.
+
+## Open the waveform app
+
+Open [`app/index.html`](app/index.html) in your browser after cloning. No installation, server, or external dependencies are required. On macOS:
+
+```bash
+open app/index.html
+```
+
+Choose a recorded round, line treatment, background, and color amount. Export PNG at 1080×1920 (story), 1080×1350 (portrait post), or 1080×1080 (square). The footer includes capture/analysis bands and the selected round's start as Unix seconds. The source clock timezone was not recorded: the UI explicitly assumes Cancún (UTC−05) and also offers UTC. Confirm that setting before treating the exported timestamp as authoritative.
+
+The app uses eight embedded recordings from the [October 2 dresser experiment](experiments/2026-10-02/README.md). Depth, color, and geometry are artistic mappings, not measured spatial structure. Preview work is bounded, redraws are coalesced, and rendering uses no blur or animation loop.
 
 ## The instrument
 
 ```text
 FM broadcasts → antenna → RTL-SDR V4 → Raspberry Pi 4
                                             │
-                          Wi-Fi → iPhone camera + art engine (planned)
+                          Wi-Fi → browser art engine (recorded data)
                                             │
                           Wi-Fi → ESP32 + LCD controls (planned)
 ```
@@ -41,7 +53,7 @@ On October 1, 2026, we ran a three-entry pilot followed by eight shuffled rounds
 | Stay-outside controls | +0.022 dB |
 | Difference | **+0.130 dB** |
 
-All four entry effects exceeded all four controls in this recording. The closest pair was only about 0.011 dB apart. Eight rounds are not enough to establish a reliable detector, and environmental drift and sample loss remain concerns. The next planned experiment is an unchanged repeat, not a tuned demonstration.
+All four entry effects exceeded all four controls in this recording. The closest pair was only about 0.011 dB apart. Eight rounds are not enough to establish a reliable detector, and environmental drift and sample loss remain concerns. An October 2 run at a new dresser placement produced a larger separation; see the follow-up below.
 
 Read the [experiment log](experiments/2026-10-01/README.md), including every trial, limitations, and raw data.
 
@@ -112,7 +124,7 @@ The capture band is currently fixed at **88–90.5 MHz**, with **20.7 dB gain** 
 
 1. Repeat the controlled result and improve capture reliability.
 2. Build a capture API on the Pi, with fresh empty-scene calibration.
-3. Synchronize an iPhone portrait with several seconds of RF measurements.
+3. Trigger a camera-free capture from an iPhone or browser.
 4. Map measured differences into an expressive visual treatment.
 5. Add the ESP32's 2.8-inch display as the physical shutter and spectrum monitor.
 

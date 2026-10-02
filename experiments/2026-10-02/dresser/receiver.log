@@ -1,0 +1,22 @@
+Number of frequency hops: 1
+Dongle bandwidth: 2500000Hz
+Downsampling by: 1x
+Cropping by: 0.00%
+Total FFT bins: 128
+Logged FFT bins: 128
+FFT bin size: 19531.25Hz
+Buffer size: 16384 bytes (3.28ms)
+Reporting every 1 seconds
+Found 1 device(s):
+  0:  RTLSDRBlog, Blog V4, SN: 00000001
+
+Using device 0: Generic RTL2832U OEM
+Detached kernel driver
+Found Rafael Micro R828D tuner
+RTL-SDR Blog V4 Detected
+Tuner gain set to 20.70 dB.
+Exact sample rate is: 2500000.107620 Hz
+Signal caught, finishing scan pass.
+
+User cancel, exiting...
+Reattached kernel driver
