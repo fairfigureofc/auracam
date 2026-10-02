@@ -1,0 +1,1 @@
+{"version":"2.0.0","tasks":[{"label":"AuraCam: Build","type":"shell","command":"~/.platformio/penv/bin/pio run","group":"build","problemMatcher":[]},{"label":"AuraCam: Upload","type":"shell","command":"~/.platformio/penv/bin/pio run -t upload","problemMatcher":[]}]}

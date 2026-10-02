@@ -2,3 +2,15 @@ __pycache__/
 *.pyc
 .DS_Store
 .venv/
+
+# Native and embedded build products
+.pio/
+DerivedData/
+build/
+xcuserdata/
+*.xcuserstate
+.env
+.env.*
+*.mobileprovision
+*.p12
+*.pem
