@@ -1,0 +1,210 @@
+{
+  "protocol": "balanced-randomized-presence-v1",
+  "completed": true,
+  "trial_order": [
+    "person",
+    "control",
+    "control",
+    "person",
+    "person",
+    "control",
+    "person",
+    "control"
+  ],
+  "analysis_plan": {
+    "band_hz": [
+      89150000,
+      89450000
+    ],
+    "boundary_trim_seconds": 2,
+    "metric": "Convert bins to linear power, average within band, then convert to dB. For each trial compare the measurement mean with the mean of its preceding and following empty periods. Compare person and control trial effects; trials, not per-second rows, are replicates."
+  },
+  "frequency_hz": [
+    88000000,
+    90500000
+  ],
+  "gain_db": 20.7,
+  "note": "Local Pi timestamps; omit measurements overlapping transition boundaries.",
+  "phases": [
+    {
+      "phase": "departure",
+      "start": "2026-10-01T21:42:35.030901",
+      "end": "2026-10-01T21:42:55.031146"
+    },
+    {
+      "phase": "receiver_warmup",
+      "start": "2026-10-01T21:42:55.033552",
+      "end": "2026-10-01T21:43:05.033771"
+    },
+    {
+      "phase": "empty_control_a",
+      "start": "2026-10-01T21:43:05.033881",
+      "end": "2026-10-01T21:43:25.033997"
+    },
+    {
+      "phase": "empty_control_b",
+      "start": "2026-10-01T21:43:25.034048",
+      "end": "2026-10-01T21:43:45.034233"
+    },
+    {
+      "phase": "trial_1_person_entry_transition",
+      "start": "2026-10-01T21:43:45.034416",
+      "end": "2026-10-01T21:43:55.034572"
+    },
+    {
+      "phase": "trial_1_person",
+      "start": "2026-10-01T21:43:55.034721",
+      "end": "2026-10-01T21:44:10.034864"
+    },
+    {
+      "phase": "trial_1_person_exit_transition",
+      "start": "2026-10-01T21:44:10.035015",
+      "end": "2026-10-01T21:44:20.035159"
+    },
+    {
+      "phase": "trial_1_empty",
+      "start": "2026-10-01T21:44:20.035237",
+      "end": "2026-10-01T21:44:40.035403"
+    },
+    {
+      "phase": "trial_2_control_entry_transition",
+      "start": "2026-10-01T21:44:40.035518",
+      "end": "2026-10-01T21:44:50.035680"
+    },
+    {
+      "phase": "trial_2_control",
+      "start": "2026-10-01T21:44:50.035860",
+      "end": "2026-10-01T21:45:05.036014"
+    },
+    {
+      "phase": "trial_2_control_exit_transition",
+      "start": "2026-10-01T21:45:05.036175",
+      "end": "2026-10-01T21:45:15.036319"
+    },
+    {
+      "phase": "trial_2_empty",
+      "start": "2026-10-01T21:45:15.036398",
+      "end": "2026-10-01T21:45:35.036624"
+    },
+    {
+      "phase": "trial_3_control_entry_transition",
+      "start": "2026-10-01T21:45:35.036787",
+      "end": "2026-10-01T21:45:45.036938"
+    },
+    {
+      "phase": "trial_3_control",
+      "start": "2026-10-01T21:45:45.037086",
+      "end": "2026-10-01T21:46:00.037231"
+    },
+    {
+      "phase": "trial_3_control_exit_transition",
+      "start": "2026-10-01T21:46:00.037381",
+      "end": "2026-10-01T21:46:10.037532"
+    },
+    {
+      "phase": "trial_3_empty",
+      "start": "2026-10-01T21:46:10.037609",
+      "end": "2026-10-01T21:46:30.037794"
+    },
+    {
+      "phase": "trial_4_person_entry_transition",
+      "start": "2026-10-01T21:46:30.037954",
+      "end": "2026-10-01T21:46:40.038103"
+    },
+    {
+      "phase": "trial_4_person",
+      "start": "2026-10-01T21:46:40.038225",
+      "end": "2026-10-01T21:46:55.038356"
+    },
+    {
+      "phase": "trial_4_person_exit_transition",
+      "start": "2026-10-01T21:46:55.038503",
+      "end": "2026-10-01T21:47:05.038651"
+    },
+    {
+      "phase": "trial_4_empty",
+      "start": "2026-10-01T21:47:05.038726",
+      "end": "2026-10-01T21:47:25.038908"
+    },
+    {
+      "phase": "trial_5_person_entry_transition",
+      "start": "2026-10-01T21:47:25.039066",
+      "end": "2026-10-01T21:47:35.039216"
+    },
+    {
+      "phase": "trial_5_person",
+      "start": "2026-10-01T21:47:35.039361",
+      "end": "2026-10-01T21:47:50.039503"
+    },
+    {
+      "phase": "trial_5_person_exit_transition",
+      "start": "2026-10-01T21:47:50.039692",
+      "end": "2026-10-01T21:48:00.039839"
+    },
+    {
+      "phase": "trial_5_empty",
+      "start": "2026-10-01T21:48:00.039916",
+      "end": "2026-10-01T21:48:20.040137"
+    },
+    {
+      "phase": "trial_6_control_entry_transition",
+      "start": "2026-10-01T21:48:20.040301",
+      "end": "2026-10-01T21:48:30.040442"
+    },
+    {
+      "phase": "trial_6_control",
+      "start": "2026-10-01T21:48:30.040592",
+      "end": "2026-10-01T21:48:45.040734"
+    },
+    {
+      "phase": "trial_6_control_exit_transition",
+      "start": "2026-10-01T21:48:45.040887",
+      "end": "2026-10-01T21:48:55.041041"
+    },
+    {
+      "phase": "trial_6_empty",
+      "start": "2026-10-01T21:48:55.041122",
+      "end": "2026-10-01T21:49:15.041327"
+    },
+    {
+      "phase": "trial_7_person_entry_transition",
+      "start": "2026-10-01T21:49:15.041487",
+      "end": "2026-10-01T21:49:25.041640"
+    },
+    {
+      "phase": "trial_7_person",
+      "start": "2026-10-01T21:49:25.041797",
+      "end": "2026-10-01T21:49:40.041940"
+    },
+    {
+      "phase": "trial_7_person_exit_transition",
+      "start": "2026-10-01T21:49:40.042089",
+      "end": "2026-10-01T21:49:50.042236"
+    },
+    {
+      "phase": "trial_7_empty",
+      "start": "2026-10-01T21:49:50.042314",
+      "end": "2026-10-01T21:50:10.042495"
+    },
+    {
+      "phase": "trial_8_control_entry_transition",
+      "start": "2026-10-01T21:50:10.042654",
+      "end": "2026-10-01T21:50:20.042809"
+    },
+    {
+      "phase": "trial_8_control",
+      "start": "2026-10-01T21:50:20.042957",
+      "end": "2026-10-01T21:50:35.043111"
+    },
+    {
+      "phase": "trial_8_control_exit_transition",
+      "start": "2026-10-01T21:50:35.043260",
+      "end": "2026-10-01T21:50:45.043427"
+    },
+    {
+      "phase": "trial_8_empty",
+      "start": "2026-10-01T21:50:45.043571",
+      "end": "2026-10-01T21:51:05.043769"
+    }
+  ]
+}
