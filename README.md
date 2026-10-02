@@ -4,9 +4,11 @@
 
 AuraCam is an experimental radio-driven photography project. An antenna listens to ambient radio broadcasts. We measure the room empty, then measure it with a person near the antenna. The idea is to turn that difference into a luminous, distorted, generative treatment around a photographic portrait.
 
-Think spectral ribbons, interference halos, and color fields shaped by a real capture—not a random filter.
+Like pectral ribbons, interference halos, and color fields shaped by captures and what evvvvverrrr.
 
-> “Aura” is the artistic concept. This project does not measure a spiritual aura, personality, health, or emotion. We are testing whether this inexpensive setup can detect repeatable changes associated with a person entering a room.
+I'm also just a bit bored and a bit curious. If you are too, feel free to contribute. 
+
+
 
 ## What exists today
 
@@ -15,7 +17,7 @@ Think spectral ribbons, interference halos, and color fields shaped by a real ca
 - A pilot protocol and a randomized presence-versus-empty control protocol.
 - Raw recordings, phase timestamps, receiver logs, and reproducible analysis.
 
-The iPhone camera integration, ESP32 interface, and final portrait renderer are **planned**, not implemented here. An early generative visual explored mapping spectrum power to ribbons; the current focus is validating the sensing.
+The iPhone integration, ESP32 interface, and final portrait renderer are **planned**, not implemented here. An early generative visual explored mapping spectrum power to ribbons; the current focus is validating the sensing.
 
 ## The instrument
 
